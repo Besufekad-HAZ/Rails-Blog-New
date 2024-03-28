@@ -14,7 +14,7 @@ class BlogPost < ApplicationRecord # rubocop:disable Style/Documentation
   end
 
   def draft?
-    published_at.nil?
+    published_at.nil? 
   end
 
   def published?
