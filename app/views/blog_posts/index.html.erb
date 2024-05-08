@@ -5,7 +5,7 @@
 <% @blog_posts.each do |blog_post| %>
   <div>
   <ol>
-    <li><h2><%= blog_post.title %></h2></li>
+    <li><h2><%= link_to blog_post.title, "/blog_posts/#{blog_post.id}" %></h2></li>
     <li><p><%= blog_post.body %></p><li>
     </ol>
   </div>
