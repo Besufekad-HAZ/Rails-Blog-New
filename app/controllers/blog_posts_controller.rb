@@ -25,6 +25,12 @@ class BlogPostsController < ApplicationController
     end
   end
 
+  def edit
+    @blog_post = BlogPost.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+
   private
 
   def blog_post_params
