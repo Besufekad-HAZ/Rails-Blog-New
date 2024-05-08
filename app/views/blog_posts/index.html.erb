@@ -6,7 +6,7 @@
   <% @blog_posts.each do |blog_post| %>
     <div>
       <li>
-        <%= link_to blog_post.title, blog_post_path(blog_post.id) %><br>
+        <%= link_to blog_post.title, blog_post %><br>
         <%= blog_post.body %>
       </li>
     </div>
