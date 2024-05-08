@@ -1,6 +1,17 @@
 <h1>New Blog Post</h1>
 
 <%= form_with model: @blog_post do |form| %>
+  <% if form.object.errors.any? %>
+    <div id="error_explanation">
+      <h3 style="color: red; font-family: monospace;"><%= pluralize(form.object.errors.count, "error") %> prohibited this blog_post from being saved:</h2>
+
+      <ul>
+      <% form.object.errors.full_messages.each do |message| %>
+        <li style="color: red; font-size: 1vw; font-family: monospace;"><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>

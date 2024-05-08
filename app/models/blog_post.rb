@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class BlogPost < ApplicationRecord
-
+class BlogPost < ApplicationRecord # rubocop:disable Style/Documentation
   validates :title, presence: true
   validates :body, presence: true
 
