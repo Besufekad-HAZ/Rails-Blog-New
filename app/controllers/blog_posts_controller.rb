@@ -21,7 +21,7 @@ class BlogPostsController < ApplicationController
     if @blog_post.save
       redirect_to @blog_post
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
