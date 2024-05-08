@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class BlogPostsController < ApplicationController
+class BlogPostsController < ApplicationController # rubocop:disable Style/Documentation
+  before_action :set_blog_post
+
   def index
     @blog_posts = BlogPost.all
   end
@@ -52,5 +54,9 @@ class BlogPostsController < ApplicationController
 
   def blog_post_params
     params.require(:blog_post).permit(:title, :body)
+  end
+
+  def set_blog_post
+    @blog_post = BlogPost.find(params[:id]) if params[:id]
   end
 end
