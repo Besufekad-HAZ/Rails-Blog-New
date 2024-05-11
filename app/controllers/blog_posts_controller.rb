@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 class BlogPostsController < ApplicationController # rubocop:disable Style/Documentation
-  before_action :set_blog_post
+  before_action :set_blog_post, only: %i[show edit update destroy]
 
   def index
     @blog_posts = BlogPost.all
   end
 
   def show
-    @blog_post = BlogPost.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
@@ -28,14 +27,11 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   end
 
   def edit
-    @blog_post = BlogPost.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
 
   def update
-    @blog_post = BlogPost.find(params[:id])
-
     if @blog_post.update(blog_post_params)
       redirect_to @blog_post
     else
@@ -44,7 +40,6 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   end
 
   def destroy
-    @blog_post = BlogPost.find(params[:id])
     @blog_post.destroy
 
     redirect_to root_path
