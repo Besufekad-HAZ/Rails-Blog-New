@@ -13,7 +13,11 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   end
 
   def new
-    @blog_post = BlogPost.new
+    if user_signed_in?
+      @blog_post = BlogPost.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
