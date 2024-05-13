@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BlogPostsController < ApplicationController # rubocop:disable Style/Documentation
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_blog_post, only: %i[show edit update destroy]
 
   def index
