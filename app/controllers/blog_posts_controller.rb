@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BlogPostsController < ApplicationController # rubocop:disable Style/Documentation
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_blog_post, only: %i[show edit update destroy]
 
   def index
@@ -13,7 +14,11 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   end
 
   def new
-    @blog_post = BlogPost.new
+    if user_signed_in?
+      @blog_post = BlogPost.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
