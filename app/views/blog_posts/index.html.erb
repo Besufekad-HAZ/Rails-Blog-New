@@ -4,11 +4,14 @@
 
 <ol>
   <% @blog_posts.each do |blog_post| %>
-    <div>
-      <li>
+    <div class="mt-5">
+       <li>
         <%= link_to blog_post.title, blog_post %><br>
+        <% if blog_post.draft? %>
+          <div class="p-1 rounded bg-gray-100 text-gray-900">Draft</div>
+        <% end %>
         <%= blog_post.body %>
-      </li>
     </div>
+    </li>
   <% end %>
 </ol>
