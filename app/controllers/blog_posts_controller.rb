@@ -5,7 +5,7 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   before_action :set_blog_post, only: %i[show edit update destroy]
 
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = BlogPost.published.order(created_at: :desc)
   end
 
   def show
@@ -57,6 +57,6 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   end
 
   def set_blog_post
-    @blog_post = BlogPost.find(params[:id]) if params[:id]
+    @blog_post = BlogPost.published.find(params[:id]) if params[:id]
   end
 end
