@@ -3,6 +3,7 @@
 require 'test_helper'
 
 class BlogPostTest < ActiveSupport::TestCase
+  # Test for draft? method
   test 'draft? returns true for draft blog post' do
     assert BlogPost.new(published_at: nil).draft?
   end
@@ -15,6 +16,7 @@ class BlogPostTest < ActiveSupport::TestCase
     refute BlogPost.new(published_at: 1.day.from_now).draft?
   end
 
+  # Test for published? method
   test 'published? returns true for published blog post' do
     assert BlogPost.new(published_at: 1.month.ago).published?
   end
@@ -27,6 +29,7 @@ class BlogPostTest < ActiveSupport::TestCase
     refute BlogPost.new(published_at: 1.day.from_now).published?
   end
 
+  # Test for scheduled? method
   test 'scheduled? returns true for scheduled blog post' do
     assert BlogPost.new(published_at: 1.month.from_now).scheduled?
   end
