@@ -41,4 +41,10 @@ class BlogPostTest < ActiveSupport::TestCase
   test 'published? returns false for published blog post' do
     refute BlogPost.new(published_at: 1.day.ago).scheduled?
   end
+
+  # Test for to_param method
+  test 'to_param returns id and title' do
+    blog_post = BlogPost.new(id: 1, title: 'Hello, World!')
+    assert_equal '1-hello-world', blog_post.to_param
+  end
 end
