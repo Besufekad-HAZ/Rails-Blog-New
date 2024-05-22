@@ -8,7 +8,9 @@
        <li>
         <%= link_to blog_post.title, blog_post %><br>
         <% if blog_post.draft? %>
-          <div class="p-1 rounded bg-gray-100 text-gray-900">Draft</div>
+          <div class="p-1 rounded bg-gray-100 text-orange-900">Draft</div>
+        <% elsif blog_post.scheduled? %>
+          <div class="p-1 rounded bg-blue-100 text-blue-900">Scheduled</div>
         <% end %>
         <%= blog_post.body %>
     </div>

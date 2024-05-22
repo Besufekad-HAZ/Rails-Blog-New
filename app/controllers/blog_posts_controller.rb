@@ -5,7 +5,7 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   before_action :set_blog_post, only: %i[show edit update destroy]
 
   def index
-    @blog_posts = user_signed_in? ? BlogPost.all : BlogPost.published.order(created_at: :desc)
+    @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
   end
 
   def show
