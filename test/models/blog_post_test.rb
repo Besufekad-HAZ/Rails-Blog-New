@@ -44,8 +44,7 @@ class BlogPostTest < ActiveSupport::TestCase
 
   # Test for to_param method
   test 'to_param returns id and title' do
-    blog_post = BlogPost.new(id: 1, title: 'Hello, World!')
-    assert_equal '1-hello-world', blog_post.to_param
+    assert_equal '2-published-post', blog_posts(:published).to_param
   end
 end
 
