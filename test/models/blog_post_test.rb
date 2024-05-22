@@ -12,8 +12,8 @@ class BlogPostTest < ActiveSupport::TestCase
     refute blog_posts(:published).draft?
   end
 
-  test 'draft? returns false for schduled blog post' do
-    refute blog_posts(:schduled).draft?
+  test 'draft? returns false for scheduled blog post' do
+    refute blog_posts(:scheduled).draft?
   end
 
   # Test for published? method
