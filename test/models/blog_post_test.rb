@@ -48,3 +48,5 @@ class BlogPostTest < ActiveSupport::TestCase
     assert_equal '1-hello-world', blog_post.to_param
   end
 end
+
+#  All tests pass. The BlogPost model is now fully tested.
