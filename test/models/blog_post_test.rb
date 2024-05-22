@@ -20,6 +20,6 @@ class BlogPostTest < ActiveSupport::TestCase
   end
 
   test 'published? returns true for published blog post' do
-    assert Blog.post.new(published_at: 1.month.ago).published?
+    assert Blogpost.new(published_at: 1.month.ago).published?
   end
 end
