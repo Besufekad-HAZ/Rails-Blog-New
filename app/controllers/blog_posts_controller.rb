@@ -9,8 +9,6 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
   end
 
   def show
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path
   end
 
   def new
@@ -58,5 +56,7 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
 
   def set_blog_post
     @blog_post = BlogPost.published.find(params[:id]) if params[:id]
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
   end
 end
