@@ -11,4 +11,16 @@ class BlogPost < ApplicationRecord # rubocop:disable Style/Documentation
   def to_param
     "#{id}-#{title.parameterize}"
   end
+
+  def draft?
+    published_at.nil?
+  end
+
+  def published?
+    published_at? && published_at <= Time.current
+  end
+
+  def scheduled?
+    published_at? && published_at > Time.current
+  end
 end
