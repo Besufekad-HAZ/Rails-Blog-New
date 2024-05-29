@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class BlogPost < ApplicationRecord # rubocop:disable Style/Documentation
+  has_rich_text :content
+
   validates :title, presence: true
-  validates :body, presence: true
+  validates :content, presence: true
 
   scope :draft, -> { where(published_at: nil) }
-  scope :sorted, -> { order(published_at: :asc, updated_at: :desc) }
+  scope :sorted, -> { order(arel_table[:published_at].desc.nulls_last).order(updated_at: :desc) }
   scope :published, -> { where('published_at <= ?', Time.current) }
   scope :scheduled, -> { where('published_at > ?', Time.current) }
 
