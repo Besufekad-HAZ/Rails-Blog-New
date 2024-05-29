@@ -5,7 +5,7 @@ class BlogPost < ApplicationRecord # rubocop:disable Style/Documentation
   validates :body, presence: true
 
   scope :draft, -> { where(published_at: nil) }
-  scope :sorted, -> { order(published_at: :asc, updated_at: :desc) }
+  scope :sorted, -> { order(arel_table[:published_at].desc.nulls_last).order(updated_at: :desc) }
   scope :published, -> { where('published_at <= ?', Time.current) }
   scope :scheduled, -> { where('published_at > ?', Time.current) }
 
