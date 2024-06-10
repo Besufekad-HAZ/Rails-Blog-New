@@ -9,7 +9,10 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
 
     @pagy, @blog_posts = pagy(@blog_posts)
   rescue Pagy::OverflowError
-    redirect_to root_path(page: 1)
+    # redirect_to root_path(page: 1)
+
+    params[:page] = 1
+    retry
   end
 
   def show
