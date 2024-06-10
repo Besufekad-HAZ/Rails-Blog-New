@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BlogPost < ApplicationRecord # rubocop:disable Style/Documentation
+  has_one_attached :cover_image
   has_rich_text :content
 
   validates :title, presence: true
