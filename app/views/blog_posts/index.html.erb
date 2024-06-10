@@ -5,7 +5,7 @@
 <ol>
   <% @blog_posts.each do |blog_post| %>
     <div class="mt-5">
-       <li>
+      <%= image_tag blog_post.cover_image if blog_post.cover_image.present? %>       <li>
         <%= link_to blog_post.title, blog_post %><br>
         <% if blog_post.draft? %>
           <div class="p-1 rounded bg-gray-100 text-orange-900">Draft</div>
