@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.3.0'
+ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3'
@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 gem "tailwindcss-rails", "~> 2.6"
 gem 'azure-storage-blob', '~> 2.0', require: false
+
+gem "pagy", "~> 8.4"
