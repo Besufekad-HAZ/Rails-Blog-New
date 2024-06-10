@@ -8,6 +8,8 @@ class BlogPostsController < ApplicationController # rubocop:disable Style/Docume
     @blog_posts = user_signed_in? ? BlogPost.sorted : BlogPost.published.sorted
 
     @pagy, @blog_posts = pagy(@blog_posts)
+  rescue Pagy::OverflowError
+    redirect_to root_path(page: 1)
   end
 
   def show

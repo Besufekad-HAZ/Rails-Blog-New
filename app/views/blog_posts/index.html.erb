@@ -18,4 +18,6 @@
   <% end %>
 </ol>
 
+<% if @pagy.count > @pagy.items %>
 <%== render 'pagy/custom_nav', pagy: @pagy %>
+<% end %>
