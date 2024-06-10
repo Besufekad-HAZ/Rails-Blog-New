@@ -17,6 +17,7 @@
 
   <div>
   <%= form.label :cover_image %>
+  <%= image_tag blog_post.cover_image.url if blog_post.cover_image.present? %>
   <%= form.file_field :cover_image %>
   </div>
 
