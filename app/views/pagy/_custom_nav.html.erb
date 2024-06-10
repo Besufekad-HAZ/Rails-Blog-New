@@ -2,21 +2,25 @@
 
 <nav class="my-4">
     <% if pagy.prev %>
-        <%= link_to 'Previous', pagy_url_for(pagy, pagy.prev), class: 'px-2 py-1 border rounded-l bg-gray-200 text-gray-700' %>
+        <%= link_to 'Previous', pagy_url_for(pagy, pagy.prev), class: 'px-2 py-1 border rounded-l bg-green-200 text-gray-700' %>
     <% else %>
-        <span class='px-2 py-1 border rounded-l bg-gray-200 text-gray-500'>Previous</span>
+        <span class='px-2 py-1 border rounded-l bg-green-200 text-gray-500'>Previous</span>
     <% end %>
 
     <% pagy.series.each do |item| %>
         <% if item.is_a?(Integer) %>
-            <%= link_to item, pagy_url_for(pagy, item), class: 'px-2 py-1 border bg-gray-200 text-gray-700' %>
+            <% if pagy.page == item %>
+                <%= link_to item, pagy_url_for(pagy, item), class: 'px-2 py-1 border bg-indigo-500' %>
+            <% else %>
+                <%= link_to item, pagy_url_for(pagy, item), class: 'px-2 py-1 border bg-unselected text-gray-700' %>
+            <% end %>
         <% else %>
             <span class='px-2 py-1 border bg-gray-200 text-gray-500'><%= item %></span>
         <% end %>
     <% end %>
 
     <% if pagy.next %>
-        <%= link_to 'Next', pagy_url_for(pagy, pagy.next), class: 'px-2 py-1 border rounded-r bg-gray-200 text-gray-700' %>
+        <%= link_to 'Next', pagy_url_for(pagy, pagy.next), class: 'px-2 py-1 border rounded-r bg-green-200 text-gray-700' %>
     <% else %>
         <span class='px-2 py-1 border rounded-r bg-gray-200 text-gray-500'>Next</span>
     <% end %>
