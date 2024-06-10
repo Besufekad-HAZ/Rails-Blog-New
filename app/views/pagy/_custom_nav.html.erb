@@ -1,0 +1,23 @@
+<!-- app/views/pagy/_custom_nav.html.erb -->
+
+<nav class="my-4">
+    <% if pagy.prev %>
+        <%= link_to 'Previous', pagy_url_for(pagy, pagy.prev), class: 'px-2 py-1 border rounded-l bg-gray-200 text-gray-700' %>
+    <% else %>
+        <span class='px-2 py-1 border rounded-l bg-gray-200 text-gray-500'>Previous</span>
+    <% end %>
+
+    <% pagy.series.each do |item| %>
+        <% if item.is_a?(Integer) %>
+            <%= link_to item, pagy_url_for(pagy, item), class: 'px-2 py-1 border bg-gray-200 text-gray-700' %>
+        <% else %>
+            <span class='px-2 py-1 border bg-gray-200 text-gray-500'><%= item %></span>
+        <% end %>
+    <% end %>
+
+    <% if pagy.next %>
+        <%= link_to 'Next', pagy_url_for(pagy, pagy.next), class: 'px-2 py-1 border rounded-r bg-gray-200 text-gray-700' %>
+    <% else %>
+        <span class='px-2 py-1 border rounded-r bg-gray-200 text-gray-500'>Next</span>
+    <% end %>
+</nav>
