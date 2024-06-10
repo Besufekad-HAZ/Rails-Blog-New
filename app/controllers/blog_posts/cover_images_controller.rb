@@ -4,6 +4,7 @@ class BlogPosts::CoverImagesController < ApplicationController
 
   def destroy
     @blog_post.cover_image.purge_later
+    redirect_to edit_blog_post_path(@blog_post)
   end
 
   private
