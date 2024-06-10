@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 gem "tailwindcss-rails", "~> 2.6"
 gem 'azure-storage-blob', '~> 2.0', require: false
+
+gem "pagy", "~> 8.4"
